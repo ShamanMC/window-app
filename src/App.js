@@ -4,6 +4,15 @@ import "./styles.css";
 
 import window_pic from "./pictures/window-front-final.png";
 import porta_pic from "./pictures/porta.png";
+import wood_color_1 from "./pictures/wood-color-1.jpg"
+import wood_color_2 from "./pictures/wood-color-2.jpg"
+import wood_color_3 from "./pictures/wood-color-3.jpg"
+import wood_color_4 from "./pictures/wood-color-4.jpg"
+import wood_color_5 from "./pictures/wood-color-5.jpg"
+import wood_color_6 from "./pictures/wood-color-6.jpg"
+import wood_color_7 from "./pictures/wood-color-7.jpg"
+import wood_color_8 from "./pictures/wood-color-8.jpg"
+import wood_color_9 from "./pictures/wood-color-9.jpg"
 
 
 export default function App() {
@@ -117,20 +126,43 @@ export default function App() {
     "#D2D3CE", //RAL MAT
     "#5B3614", //RAL MAT
     "#978E65", //
-    porta_pic
+    
   ];
+
+  const windowWoodColors = [ //plasma-doors.com/porfolio_page/wood-colors
+    wood_color_1, //T550 MAONI
+    wood_color_2, //T870 Shargreen Πεύκο
+    wood_color_3, //βελανιδιά ανοιχτή
+    wood_color_4, //t660 Shargreen GOLDEN OAK
+    wood_color_5, //T680 ΒΕΛΑΝΙΔΙΑ ΚΟΚΚΙΝΗ
+    wood_color_6, //T740 ΒΕΛΑΝΔΙΔΙΑ ΣΚΟΥΡΟ
+    wood_color_7, //T800 GOLDEN OAK
+    wood_color_8, //T790 GOLDEN OAK
+    wood_color_9, //T770 ΠΕΥΚΟ
+  ]
+
 
 
   const [background, setBackground] = useState("#DADAD3");
   const [windowBackground, setWindowBackground] = useState("#8f9897");
   const [current, setCurrent] = useState("#CBB6C0");
+  const [colorIsHex, setColorIsHex] = useState(true); 
 
   function windowClickHandler(windowColor) {
     setWindowBackground(windowColor);
     setCurrent(windowColor);
+    setColorIsHex(true);
+    console.log(windowColor);
 
   }
   
+  function woodClickHandler(windowWoodColor) {
+    setWindowBackground(windowWoodColor);
+    setCurrent("A wood color");
+    setColorIsHex(false);
+    console.log(colorIsHex);
+  }
+
 
   return (
     <div className="App" style={{ background: background }}>
@@ -139,7 +171,7 @@ export default function App() {
       <p className="text">Δεν είσαι σίγουρος/η τι χρώματα κουφωμάτων να επιλέξεις για να ταιριάζουν με το χώρο σου;<br/><br/>
       Χρησιμοποίησε την εφαρμογή και συνδύασε το χρώμα των κουφωμάτων με τον τοίχο σου για να πετύχεις την καλύτερη χρωματική αρμονία και το χρωματικό στυλ που σου ταιριάζει!<br/><br /> 
       Τα κουφώματα αλουμινίου και PVC μπορούν να βαφτούν σε πολλές <a href ="https://www.unionprofile.gr/xromatologio-koufomaton">αποχρώσεις RAL</a>. Συνεπώς μπορούν να συνδυαστούν εύκολα με οποιοδήποτε χρώμα και το ύφος του χώρου σας και να αντικατοπτρίζουν τη δική σας μοναδική αισθητική!</p>
-      <img className="window_pic" style={{background: windowBackground}}src={window_pic} alt="window"/>
+      <img className="window_pic" style={colorIsHex ? {background: windowBackground} : {backgroundImage: "url(" + windowBackground + ")"}}src={window_pic} alt="window"/>
       <p className="color_code">Window color code: {current}</p>
         
       <div className="titles">
@@ -199,7 +231,45 @@ export default function App() {
                 */}
 
             </div>
+
+
+            
+
           ))}
+
+
+
+          {windowWoodColors.map((windowWoodColor, index) => (
+            <div key={index} className="card">
+              <div
+                style={{
+                  backgroundImage: `url(${windowWoodColor})`,
+                  filter: "brightness(85%)",
+                  boxShadow: windowWoodColor === windowBackground ? "0 0 5px #000" : ""
+                  
+                }}
+                className="box"
+                onClick={() => woodClickHandler(windowWoodColor)} 
+              />
+          
+               {/*  <p
+                  style={{ color: windowColor === background ? "#fff" : windowColor }}
+                  onClick={() => setCurrent(windowColor)}
+                >
+                  {windowColor}
+                </p>
+                */}
+
+            </div>
+
+
+            
+
+          ))}
+
+
+
+
         </div>       
         
       </div>
