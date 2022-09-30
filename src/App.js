@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 
 import "./styles.css";
 
 import window_pic from "./pictures/window-front-final.png";
 import porta_pic from "./pictures/porta.png";
+import pantzouri_pic from "./pictures/pantzouri.png";
+
 import wood_color_1 from "./pictures/wood-color-1.jpg"
 import wood_color_2 from "./pictures/wood-color-2.jpg"
 import wood_color_3 from "./pictures/wood-color-3.jpg"
@@ -171,12 +175,19 @@ export default function App() {
       <p className="text">Δεν είσαι σίγουρος/η τι χρώματα κουφωμάτων να επιλέξεις για να ταιριάζουν με το χώρο σου;<br/><br/>
       Χρησιμοποίησε την εφαρμογή και συνδύασε το χρώμα των κουφωμάτων με τον τοίχο σου για να πετύχεις την καλύτερη χρωματική αρμονία και το χρωματικό στυλ που σου ταιριάζει!<br/><br /> 
       Τα κουφώματα αλουμινίου και PVC μπορούν να βαφτούν σε πολλές <a href ="https://www.unionprofile.gr/xromatologio-koufomaton">αποχρώσεις RAL</a>. Συνεπώς μπορούν να συνδυαστούν εύκολα με οποιοδήποτε χρώμα και το ύφος του χώρου σας και να αντικατοπτρίζουν τη δική σας μοναδική αισθητική!</p>
-      <img className="window_pic" style={colorIsHex ? {background: windowBackground} : {backgroundImage: "url(" + windowBackground + ")"}}src={window_pic} alt="window"/>
+      
+      <AliceCarousel autoPlay autoPlayInterval="3000">
+        <img src={window_pic} className="sliderimg window_pic" style={colorIsHex ? {background: windowBackground} : {backgroundImage: "url(" + windowBackground + ")"}}/>
+        <img src={porta_pic} className="sliderimg window_pic" style={colorIsHex ? {background: windowBackground} : {backgroundImage: "url(" + windowBackground + ")"}}/>
+        <img src={pantzouri_pic} className="sliderimg window_pic" style={colorIsHex ? {background: windowBackground} : {backgroundImage: "url(" + windowBackground + ")"}}/>   
+      </AliceCarousel>
+      
+      
       <p className="color_code">Window color code: {current}</p>
         
       <div className="titles">
         <h2 className="title">Χρώμα Τοίχου</h2>
-        <h2 className="title">Χρώμα Παραθύρου</h2>
+        <h2 className="title">Χρώμα Κουφώματος</h2>
       </div>
 
 

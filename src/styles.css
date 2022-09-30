@@ -132,3 +132,9 @@
 .window_pic{
   height: 310px;
 }
+
+.sliderimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
